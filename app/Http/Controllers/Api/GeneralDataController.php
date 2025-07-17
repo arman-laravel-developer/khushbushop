@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\GeneralSetting;
+use App\Models\GoogleFacebookCode;
 use App\Models\Offer;
 use App\Models\OfferProduct;
 use App\Models\Payment;
@@ -45,6 +46,17 @@ class GeneralDataController extends Controller
                 'generalData' => null
             ], 500);
         }
+    }
+
+    public function gtm()
+    {
+        $code = GoogleFacebookCode::first();
+
+        return response()->json([
+            'gtm' => [
+                'gtm_id' => $code->gtm_id ?? null,
+            ]
+        ]);
     }
 
     public function getCategories ()
